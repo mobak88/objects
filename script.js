@@ -3,6 +3,9 @@ const animalColor = document.querySelector('.animal-color');
 const animalName = document.querySelector('.animal-name');
 const animalCountry = document.querySelector('.animal-country');
 const animalImage = document.querySelector('.animal-image');
+const feedAnimal = document.querySelector('.feed-animal');
+const animalFoodMsg = document.querySelector('.animal-food-msg');
+const userInput = document.querySelector('.user-input');
 
 class Animal {
     // Constructor creates new object
@@ -17,7 +20,8 @@ class Animal {
 
     // Class method to be used with objects
     feedAnimal() {
-        console.log(`${this.animalName} have been fed`);
+        animalFoodMsg.innerHTML = `${this.animalName} have been fed with ${userInput.value}`;
+
     }
 }
 
@@ -33,4 +37,14 @@ animalName.innerHTML = Dog.animalName;
 animalCountry.innerHTML = Dog.color;
 animalImage.innerHTML += `<img src='${Dog.img}' />`;
 
-Dog.feedAnimal();
+/* const feeding = function(e) {
+    Dog.feedAnimal();
+    e.preventDefault();
+}; */
+
+// feedAnimal.onclick = feeding;
+
+feedAnimal.addEventListener('click', function(e) {
+    e.preventDefault();
+    Dog.feedAnimal();
+});
